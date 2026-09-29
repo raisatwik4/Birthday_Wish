@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For You ❤️</title>
+
+<style>
+:root {
+  color-scheme: light dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: #fff0f5;
+  color: #4b1830;
+}
+
+#app {
+  min-height: 100vh;
+  background-color: light-dark(#fff0f5, #24131d);
+  color: light-dark(#4b1830, #ffe7f0);
+  overflow: hidden;
+  position: relative;
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  font-size: 22px;
+  opacity: .22;
+  animation: float 8s linear infinite;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(110vh) rotate(0deg);
+  }
+
+  to {
+    transform: translateY(-15vh) rotate(360deg);
+  }
+}
+
+.card {
+  width: min(92vw, 720px);
+  margin: 0 auto;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 28px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.panel {
+  width: 100%;
+  padding: clamp(30px, 7vw, 65px);
+  text-align: center;
+  border: 1px solid light-dark(#f5bfd0, #63384b);
+  border-radius: 30px;
+  background: light-dark(
+    rgba(255,255,255,.86),
+    rgba(45,24,35,.92)
+  );
+  box-shadow: 0 25px 80px rgba(90, 24, 55, .18);
+  backdrop-filter: blur(10px);
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 999px;
+  background: light-dark(#ffe0ea, #4b2737);
+  color: light-dark(#a52f5b, #ffc5d9);
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(42px, 9vw, 76px);
+  line-height: .95;
+  margin: 24px 0 18px;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-family: system-ui, sans-serif;
+  font-size: clamp(16px, 3vw, 20px);
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0 auto 28px;
+  opacity: .85;
+}
+
+.cake {
+  font-size: 72px;
+  margin: 12px 0;
+}
+
+.divider {
+  width: 70px;
+  height: 2px;
+  background: light-dark(#e88ba8, #b85a7c);
+  margin: 28px auto;
+}
+
+.question {
+  font-size: clamp(28px, 6vw, 46px);
+  margin: 20px 0 30px;
+}
+
+.buttons {
+  position: relative;
+  min-height: 115px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  font-family: system-ui, sans-serif;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 15px 30px;
+  font-size: 17px;
+  cursor: pointer;
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease;
+  touch-action: manipulation;
+}
+
+#yes {
+  background: #d92f68;
+  color: white;
+  box-shadow: 0 10px 25px rgba(217,47,104,.3);
+}
+
+#yes:hover {
+  transform: translateY(-2px) scale(1.04);
+}
+
+#no {
+  background: light-dark(#f7d8e3, #492838);
+  color: light-dark(#6c2443, #ffd6e4);
+  position: absolute;
+}
+
+.hint {
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  opacity: .55;
+  margin-top: 4px;
+}
+
+.hidden {
+  display: none;
+}
+
+.celebrate h2 {
+  font-size: clamp(35px, 7vw, 60px);
+  margin: 20px 0 10px;
+}
+
+.celebrate p {
+  font-family: system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.confetti {
+  position: fixed;
+  top: -20px;
+  font-size: 24px;
+  animation: fall 3s linear forwards;
+  z-index: 10;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.small {
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  opacity: .65;
+  margin-top: 28px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+
+  <div class="bg" aria-hidden="true">
+    <span class="heart" style="left:8%;animation-delay:0s">♥</span>
+    <span class="heart" style="left:24%;animation-delay:2s">♡</span>
+    <span class="heart" style="left:43%;animation-delay:4s">♥</span>
+    <span class="heart" style="left:67%;animation-delay:1s">♡</span>
+    <span class="heart" style="left:88%;animation-delay:3s">♥</span>
+  </div>
+
+  <main class="card">
+
+    <section class="panel" id="mainPanel">
+
+      <div class="badge">
+        A little surprise for you
+      </div>
+
+      <div class="cake">
+        🎂
+      </div>
+
+      <h1>
+        Happy Birthday,<br>
+        Beautiful ❤️
+      </h1>
+
+      <p class="subtitle">
+        Today is your day, but I wanted to make it a little more special.
+        But Before asking anything Prerna I am really sorry for the activity.But yaar galti ho gyi kya kru Sorry</p>
+<p class="subtitle">
+        There is something I've been wanting to ask you...
+      </p>
+
+      <div class="divider"></div>
+
+      <div id="proposal">
+
+        <div class="question">
+          Will you be mine? 💖
+        </div>
+
+        <div class="buttons" id="buttons">
+
+          <button id="yes">
+            Yes ❤️
+          </button>
+
+          <button id="no">
+            No 🙈
+          </button>
+
+        </div>
+
+        <div class="hint">
+          (Go on… try clicking "No" 😄)
+        </div>
+
+      </div>
+
+      <div id="success" class="celebrate hidden">
+
+        <div style="font-size:70px">
+          🥰💖🎉
+        </div>
+
+        <h2>
+          Yay! You said YES!
+        </h2>
+
+        <p>
+          That just made this birthday my favourite one. ❤️
+          <br>
+          Happy Birthday once again — here's to us and all the memories still to come.
+          Please Send me SS i am very excited to see.And also sorry for all misunderstanding and the thing i did             yesterday
+        </p>
+
+      </div>
+
+      <div class="small">
+        Made with a little courage, a lot of love, and birthday wishes.
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<script>
+
+const no = document.getElementById("no");
+const yes = document.getElementById("yes");
+const buttons = document.getElementById("buttons");
+const proposal = document.getElementById("proposal");
+const success = document.getElementById("success");
+
+function moveNo() {
+
+  const rect = buttons.getBoundingClientRect();
+  const btn = no.getBoundingClientRect();
+
+  const pad = 6;
+
+  const maxX = Math.max(
+    pad,
+    rect.width - btn.width - pad
+  );
+
+  const maxY = Math.max(
+    pad,
+    rect.height - btn.height - pad
+  );
+
+  const x = pad + Math.random() * maxX;
+  const y = pad + Math.random() * maxY;
+
+  no.style.left = x + "px";
+  no.style.top = y + "px";
+}
+
+no.addEventListener(
+  "mouseenter",
+  moveNo
+);
+
+no.addEventListener(
+  "pointerdown",
+  function(e) {
+    e.preventDefault();
+    moveNo();
+  }
+);
+
+no.addEventListener(
+  "touchstart",
+  function(e) {
+    e.preventDefault();
+    moveNo();
+  },
+  { passive: false }
+);
+
+no.addEventListener(
+  "focus",
+  moveNo
+);
+
+function celebrate() {
+
+  proposal.classList.add("hidden");
+
+  success.classList.remove("hidden");
+
+  for (let i = 0; i < 35; i++) {
+
+    const c = document.createElement("span");
+
+    c.className = "confetti";
+
+    c.textContent =
+      ["💖", "💕", "✨", "🌸", "❤️"]
+      [Math.floor(Math.random() * 5)];
+
+    c.style.left =
+      Math.random() * 100 + "vw";
+
+    c.style.animationDelay =
+      Math.random() * .8 + "s";
+
+    document.body.appendChild(c);
+
+    setTimeout(
+      () => c.remove(),
+      4000
+    );
+  }
+}
+
+yes.addEventListener(
+  "click",
+  celebrate
+);
+
+window.addEventListener(
+  "resize",
+  () => {
+    if (!proposal.classList.contains("hidden")) {
+      moveNo();
+    }
+  }
+);
+
+moveNo();
+
+</script>
+
+</body>
+</html>
